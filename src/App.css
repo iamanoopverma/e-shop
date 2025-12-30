@@ -1,0 +1,16 @@
+.container{
+  margin-inline: 6vw;
+}
+
+.todo-section{
+   box-shadow: 0 0 5px rgba(0,0,0,0.2);
+   padding: 50px;
+   display: flex;
+   flex-direction: column;
+   gap:20px;
+   align-items: center;
+}
+
+.todo-section h2{
+  color:rgb(92, 109, 157);
+}

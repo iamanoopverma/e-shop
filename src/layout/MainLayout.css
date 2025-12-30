@@ -1,0 +1,23 @@
+.navbar{
+    background-color: rgb(124, 190, 255);
+    padding: 26px 6vw;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar a{
+    color:#fff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    background-color: rgb(3, 3, 3);
+    color:#fff;
+    padding: 12px;
+    width: 100vw;
+    text-align: center;
+}
