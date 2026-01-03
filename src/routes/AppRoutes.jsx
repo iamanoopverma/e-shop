@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from '../layout/MainLayout';
 
-import Home from '../pages/Home';
-import ProductDetails from '../pages/ProductDetails';
-import Cart from '../pages/Cart';
+import Home from '../pages/Home/Home';
+import ProductDetails from '../pages/ProductDetails/ProductDetails';
+import Cart from '../pages/Cart/Cart';
 
 function AppRoutes() {
     return (
