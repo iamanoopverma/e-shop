@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getProducts } from '../../api/products.api';
+import Product from '../../assets/components/Product/Product';
+import './Home.css'
 
 
 
@@ -27,8 +29,16 @@ function Home() {
     return (
         <>
             <h2>Home</h2>
-               
-            
+            {/* Data-dependent UI */}
+            <section className="products-sec">
+                {loading && <h3>Loading Products....</h3>}
+                {error && <h3>{error}</h3>}
+                {!loading && !error &&
+                    products.map(item => (
+                        <Product id={item.id} item={item} />
+                    ))}
+            </section>
+
 
         </>
     );
