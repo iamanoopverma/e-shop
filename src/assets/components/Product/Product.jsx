@@ -1,12 +1,15 @@
+import { Link } from 'react-router-dom'
 import './Product.css';
 
-function Product({item}) {
+function Product({ item }) {
     return (
         <>
             <div className="product-card">
-                <img src={item.image} alt={item.title} width="100"/>
-                <div className="title">{item.title}</div>
-                <div className="price">₹{item.price}</div>           
+                <Link to={`/product/${item.id}`}>
+                    <img src={item.image} alt={item.title} width="100" />
+                </Link>
+                <Link to={`/product/${item.id}`} className="title">{item.title}</Link>
+                <div className="price">₹{item.price}</div>
             </div>
         </>
     );
