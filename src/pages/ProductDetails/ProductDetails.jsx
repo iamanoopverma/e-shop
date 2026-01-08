@@ -1,8 +1,7 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { getProductId } from '../../api/products.api';
 import { useState, useEffect } from 'react';
-
-
+ 
 function ProductDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -29,8 +28,7 @@ function ProductDetails() {
     }
     load();
   }, [id])
-
-  console.log(product)
+ 
 
   return (
     <>
