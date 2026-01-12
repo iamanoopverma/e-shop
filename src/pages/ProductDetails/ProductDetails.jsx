@@ -1,6 +1,7 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { getProductId } from '../../api/products.api';
 import { useState, useEffect } from 'react';
+import {useCart} from '../../context/CartContext'
  
 function ProductDetails() {
   const { id } = useParams();
@@ -8,8 +9,9 @@ function ProductDetails() {
   const [ product, setProduct ] = useState(null);
   const [ loading, setLoading ] = useState(true);
   const [ error, setError ] = useState(null);
+  const {addToCart} = useCart();
   function handleAddToCart() {
-    addTodo(product);
+    addToCart(product);
     navigate('/cart');
   }
 
