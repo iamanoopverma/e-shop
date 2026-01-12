@@ -23,9 +23,17 @@ export function CartProvider({children}){
         setCart(prev => prev.filter(item => item.id !== id));
     }
     
+    function decreaseProductQty(id) {
+        if (cart.some(item => Object.value(item)[3] > 1)) {
+            setCart(prev => prev.map(item => item.id === id ? { ...item, qty: qty - 1 } : true));
+        }
+        else {
+            removeFromCart(id);
+        }
+    }
 
     return(
-        <CartContext.Provider value={{cart, addToCart}}>
+        <CartContext.Provider value={{cart, addToCart, removeFromCart, decreaseProductQty}}>
             {children}
         </CartContext.Provider>
     );
