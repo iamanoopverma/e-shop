@@ -18,6 +18,10 @@ export function CartProvider({children}){
         setCart(prev => [...prev,item]);
        }
     }
+
+    function removeFromCart(id) {
+        setCart(prev => prev.filter(item => item.id !== id));
+    }
     
 
     return(
