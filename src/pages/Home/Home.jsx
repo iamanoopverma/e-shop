@@ -35,7 +35,7 @@ function Home() {
                 {error && <h3>{error}</h3>}
                 {!loading && !error &&
                     products.map(item => (
-                        <Product id={item.id} item={item} />
+                        <Product key={item.id} item={item} />
                     ))}
             </section>
 
