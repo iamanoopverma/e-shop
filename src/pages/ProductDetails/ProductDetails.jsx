@@ -10,11 +10,6 @@ function ProductDetails() {
   const [ loading, setLoading ] = useState(true);
   const [ error, setError ] = useState(null);
   const {addToCart} = useCart();
-  function handleAddToCart() {
-    addToCart(product);
-    navigate('/cart');
-  }
-
   useEffect(() => {
     async function load() {
       try {
@@ -30,7 +25,10 @@ function ProductDetails() {
     }
     load();
   }, [id])
- 
+  function handleAddToCart() {
+    addToCart(product.id, product);
+    navigate('/cart');
+  }
 
   return (
     <>

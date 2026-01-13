@@ -4,9 +4,9 @@ const CartContext = createContext();
 export function CartProvider({children}){
     const [cart, setCart] = useState([]);
 
-    function addToCart(product){
-       if(cart.some(item => Object.values(item)[0] === product.id)){
-           setCart(cart.map(item => item.id === product.id ? {...item, qty:qty+1} : true));
+    function addToCart(id, product=null){
+       if(!product){
+           setCart(prev => prev.map(item => item.id === id ? {...item, qty:item.qty+1} : true));
        }
        else{
         const item = {
