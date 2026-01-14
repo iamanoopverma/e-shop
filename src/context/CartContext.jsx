@@ -6,7 +6,7 @@ export function CartProvider({ children }) {
 
     function addToCart(id, product = null) {
         if (!product) {
-            setCart(prev => prev.map(item => item.id === id ? { ...item, qty: item.qty + 1 } : true));
+            setCart(prev => prev.map(item => item.id === id ? { ...item, qty: item.qty + 1 } : item));
         }
         else {
             const item = {
