@@ -5,7 +5,7 @@ export function CartProvider({ children }) {
     const [cart, setCart] = useState([]);
 
     function addToCart(id, product = null) {
-        if (!product) {
+        if (cart.some(item => item.id === id)) {
             setCart(prev => prev.map(item => item.id === id ? { ...item, qty: item.qty + 1 } : item));
         }
         else {
