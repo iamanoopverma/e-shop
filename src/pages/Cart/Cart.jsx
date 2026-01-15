@@ -2,6 +2,7 @@ import {useCart} from '../../context/CartContext'
 
 function Cart(){
   const {cart, addToCart, decreaseProductQty} = useCart();
+  const total = cart.reduce((acc, item) => (acc + (item.price * item.qty)),0);
 
     return(
         <>
@@ -20,6 +21,8 @@ function Cart(){
                 </div>
             </div>
           ))}
+
+          <h2>Total:{total} </h2>
         </>
     );
 }
