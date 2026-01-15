@@ -1,30 +1,32 @@
-import {useCart} from '../../context/CartContext'
+import { useCart } from '../../context/CartContext'
 
-function Cart(){
-  const {cart, addToCart, decreaseProductQty} = useCart();
-  const total = cart.reduce((acc, item) => (acc + (item.price * item.qty)),0);
+function Cart() {
+  const { cart, addToCart, decreaseProductQty } = useCart();
+  function total() { 
+    cart.reduce((acc, item) => (acc + (item.price * item.qty)), 0) 
+  }
 
-    return(
-        <>
-          <h2>Cart</h2>
+  return (
+    <>
+      <h2>Cart</h2>
 
-          {cart.length === 0 ? <p>Cart is Empty.</p> :
-          cart.map(item => (
-            <div key={item.id} className='cart-item'>
-                <img src={item.image} alt={item.title} width="120"/>
-                <p>{item.title}</p>
-                <p>{item.price}</p>
-                <div className="qty-box">
-                  <button onClick={() => decreaseProductQty(item.id)}>-</button>
-                  <span>{item.qty}</span>
-                  <button onClick={()=> addToCart(item.id)}>+</button>
-                </div>
+      {cart.length === 0 ? <p>Cart is Empty.</p> :
+        cart.map(item => (
+          <div key={item.id} className='cart-item'>
+            <img src={item.image} alt={item.title} width="120" />
+            <p>{item.title}</p>
+            <p>{item.price}</p>
+            <div className="qty-box">
+              <button onClick={() => decreaseProductQty(item.id)}>-</button>
+              <span>{item.qty}</span>
+              <button onClick={() => addToCart(item.id)}>+</button>
             </div>
-          ))}
+          </div>
+        ))}
 
-          <h2>Total:{total} </h2>
-        </>
-    );
+      <h2>Total:{total()} </h2>
+    </>
+  );
 }
 
 export default Cart;
