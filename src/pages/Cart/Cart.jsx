@@ -12,11 +12,11 @@ function Cart() {
 
       {cart.length > 0 ?
         <div>{cart.map(item => (
-          <div key={item.id} className='cart-item'>
+          <div key={item.id} >
             <img src={item.image} alt={item.title} width="120" />
             <p>{item.title}</p>
             <p>{item.price}</p>
-            <div className="qty-box">
+            <div >
               <button onClick={() => decreaseProductQty(item.id)}>-</button>
               <span>{item.qty}</span>
               <button onClick={() => addToCart(item.id)}>+</button>

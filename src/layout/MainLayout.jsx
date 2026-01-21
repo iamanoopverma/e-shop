@@ -1,11 +1,10 @@
-import { Outlet, Link } from "react-router-dom";
-import './MainLayout.css';
+import { Outlet, Link } from "react-router-dom"; 
 
 function MainLayout() {
     return (
         <>
 
-            <nav className="navbar">
+            <nav>
                 <Link to="/">Home</Link>
                 <Link to="/cart">Carts</Link>
             </nav>

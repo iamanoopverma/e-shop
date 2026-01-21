@@ -32,7 +32,7 @@ function ProductDetails() {
 
   return (
     <>
-      <div className="product-details">
+      <div>
         <h2>Product Details</h2>
 
         {loading && <h3>Loading....</h3>}
