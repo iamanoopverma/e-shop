@@ -24,12 +24,9 @@ function Home() {
     }, [])
 
     return (
-        <>
-            <h2 className="text-3xl font-bold text-red-600">
-                Tailwind working with Vite plugin
-            </h2>
+        <> 
 
-            <h2>Home</h2>
+            <h2>Homee</h2>
             {/* Data-dependent UI */}
             <section>
                 {loading && <h3>Loading Products....</h3>}
@@ -39,7 +36,6 @@ function Home() {
                         <Product key={item.id} item={item} />
                     ))}
             </section>
-
 
         </>
     );
