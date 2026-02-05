@@ -23,6 +23,7 @@ function MainLayout() {
                         aria-label="Toggle Navigation Menu"
                         aria-expanded={isMenuOpen}
                         aria-controls="mobile-menu"
+                        aria-hidden={isMenuOpen}
                     >
                         {
                             isMenuOpen ?
@@ -40,6 +41,13 @@ function MainLayout() {
                         <Link to="/cart">Carts</Link>
                     </nav>
                 </div>
+                {isMenuOpen && (
+                    <div
+                        className="fixed inset-0 bg-black/40 z-10"
+                        onClick={handleToggle}
+                        aria-hidden="true"
+                    />
+                )}
                 <nav className={`${navMobile} ${menuVisibility}`} id="mobile-menu" aria-hidden={!isMenuOpen}>
                     <Link to="/">Home</Link>
                     <Link to="/">About</Link>
