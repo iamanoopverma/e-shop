@@ -43,8 +43,6 @@ function MainLayout() {
         return () => document.removeEventListener("keydown", handleKeyDown);
     }, [isMenuOpen]);
 
-
-
     useEffect(() => {
         if (!isMenuOpen) {
             menuButtonRef.current?.focus();
@@ -67,7 +65,7 @@ function MainLayout() {
                     >
                         <svg aria-hidden="true" focusable="false" height="30" width="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g stroke-width="" /><g stroke-linecap="round" stroke-linejoin="round" /><path d="M1 12a1 1 0 0 1 1-1h20a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1m0-8a1 1 0 0 1 1-1h20a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1m0 16a1 1 0 0 1 1-1h20a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1" fill="#0f0f0f" /></svg>
                     </button>
-                    <Link to='/'>
+                    <Link to='/' tabIndex={isMenuOpen ? -1 : undefined}>
                         <img src={logo} alt="Company Logo" width="64" />
                     </Link>
                     <nav className={navDesktop}>
