@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getProducts } from '../../api/products.api';
-import Product from '../../assets/components/Product/Product'; 
+import Product from '../../assets/components/Product/Product';
 
 function Home() {
     const [products, setProducts] = useState([]);
@@ -24,18 +24,19 @@ function Home() {
     }, [])
 
     return (
-        <> 
+        <>
 
-            <h2>Homee</h2>
-            {/* Data-dependent UI */}
-            <section>
-                {loading && <h3>Loading Products....</h3>}
-                {error && <h3>{error}</h3>}
-                {!loading && !error &&
-                    products.map(item => (
-                        <Product key={item.id} item={item} />
-                    ))}
-            </section>
+            <div className="container my-12">
+                <h2 className='mb-6'>Home</h2> 
+                <section className='grid grid-cols-3 gap-x-1 gap-y-4 md:grid-cols-5 lg:gap-8'>
+                    {loading && <h3>Loading Products....</h3>}
+                    {error && <h3>{error}</h3>}
+                    {!loading && !error &&
+                        products.map(item => (
+                            <Product key={item.id} item={item} />
+                        ))}
+                </section>
+            </div>
 
         </>
     );
