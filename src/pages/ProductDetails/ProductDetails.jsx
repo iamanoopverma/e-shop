@@ -41,8 +41,8 @@ function ProductDetails() {
           <table>
             <tbody>
               <tr>
-                <th>Image</th>
-                <td><img src={product.image} alt={product.title} width="120" /></td>
+                <th>thumbnail</th>
+                <td><img src={product.thumbnail} alt={product.title} width="120" /></td>
               </tr>
               <tr>
                 <th>Name</th>
@@ -62,7 +62,7 @@ function ProductDetails() {
               </tr>
               <tr>
                 <th>Rating</th>
-                <td>{`${product.rating.rate} (${product.rating.count})`}</td>
+                <td>{`${product.rating}`}</td>
               </tr>
 
             </tbody>

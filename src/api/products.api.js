@@ -1,4 +1,4 @@
-const BASE_URL = "https://fakestoreapi.com/products";
+const BASE_URL = "https://eshop-server-c11u.onrender.com/api/products";
 
 export async function getProducts(){
     const res = await fetch(BASE_URL);

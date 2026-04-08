@@ -76,8 +76,8 @@ function MainLayout() {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <g stroke-width="" />
-              <g stroke-linecap="round" stroke-linejoin="round" />
+              <g strokeWidth="" />
+              <g strokeLinecap="round" strokeLinejoin="round" />
               <path
                 d="M1 12a1 1 0 0 1 1-1h20a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1m0-8a1 1 0 0 1 1-1h20a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1m0 16a1 1 0 0 1 1-1h20a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1"
                 fill="#0f0f0f"
@@ -123,7 +123,7 @@ function MainLayout() {
                 width="22"
                 height="22"
                 viewBox="0 0 52 52"
-                xml:space="preserve"
+                xmlSpace="preserve"
               >
                 <path d="m31 25.4 13-13.1c.6-.6.6-1.5 0-2.1l-2-2.1c-.6-.6-1.5-.6-2.1 0L26.8 21.2c-.4.4-1 .4-1.4 0L12.3 8c-.6-.6-1.5-.6-2.1 0l-2.1 2.1c-.6.6-.6 1.5 0 2.1l13.1 13.1c.4.4.4 1 0 1.4L8 39.9c-.6.6-.6 1.5 0 2.1l2.1 2.1c.6.6 1.5.6 2.1 0L25.3 31c.4-.4 1-.4 1.4 0l13.1 13.1c.6.6 1.5.6 2.1 0L44 42c.6-.6.6-1.5 0-2.1L31 26.8c-.4-.4-.4-1 0-1.4" />
               </svg>
@@ -198,8 +198,8 @@ function MainLayout() {
                       className="w-6 h-6 stroke-1 stroke-white fill-none lucide lucide-facebook-icon lucide-facebook"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     >
                       <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                     </svg>
@@ -213,8 +213,8 @@ function MainLayout() {
                       width="36"
                       height="36"
                       viewBox="0 0 24 24"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     >
                       <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
                       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />

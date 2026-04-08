@@ -14,7 +14,7 @@ export function CartProvider({ children }) {
                 title: product.title,
                 price: product.price,
                 qty: 1,
-                image: product.image
+                thumbnail: product.thumbnail
             }
             setCart(prev => [...prev, item]);
         }
