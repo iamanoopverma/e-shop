@@ -3,10 +3,10 @@
 @theme {
   --font-sans: "Poppins", system-ui, sans-serif;
   --default-transition-duration: 200ms;
-  --color-primary: #0356ad;
-  --color-secondary: #c5c62c;
-  --color-p-color: #555;
-  --color-footer: #B2B0E8;
+  --color-primary: #143170;
+  --color-secondary: #10B981;
+  --color-p-color: #6B7280;
+  --color-footer: #143170;
   --text-h1: clamp(2rem, 5vw, 3rem);
   --text-h2: clamp(1.75rem, 4vw, 2.5rem);
   --text-h3: clamp(1.5rem, 3.5vw, 2rem);

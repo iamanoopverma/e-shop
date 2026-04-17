@@ -56,7 +56,7 @@ function MainLayout() {
   return (
     <>
       <header className="bg-gray-200">
-        <div className="container flex items-center justify-between relative py-2 lg:py-3">
+        <div className="container flex items-center justify-between relative py-4">
           <button
             type="button"
             ref={menuButtonRef}
@@ -85,12 +85,13 @@ function MainLayout() {
             </svg>
           </button>
           <Link to="/" tabIndex={isMenuOpen ? -1 : undefined}>
-            <img src={logo} alt="Company Logo" width="64" />
+            <img className="w-22 md:w-26" src={logo} alt="Company Logo"/> 
           </Link>
           <nav className={navDesktop}>
-            <Link to="/">Home</Link>
-            <Link to="/">About</Link>
-            <Link to="/">Contact</Link>
+            <Link to="/">Beauty</Link>
+            <Link to="/">Fragrances</Link>
+            <Link to="/">Furnitures</Link>
+            <Link to="/">Groceries</Link>
             <Link to="/cart">Carts</Link>
           </nav>
         </div>
@@ -129,9 +130,10 @@ function MainLayout() {
               </svg>
             </button>
           )}
-          <Link to="/">Home</Link>
-          <Link to="/">About</Link>
-          <Link to="/">Contact</Link>
+          <Link to="/">Beauty</Link>
+          <Link to="/">Fragrances</Link>
+          <Link to="/">Furnitures</Link>
+          <Link to="/">Groceries</Link>
           <Link to="/cart">Carts</Link>
         </nav>
       </header>
@@ -185,7 +187,7 @@ function MainLayout() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
             <div className="flex flex-col gap-4 md:col-span-2 lg:col-span-1">
               <Link to="/">
-                <img src={logo} alt="Company Logo" width="64" />
+                <img className="w-28" src={logo} alt="Company Logo" />
               </Link>
               <p>
                 E-Shop is your one-stop online store for quality products at the
