@@ -13,7 +13,7 @@ function Home() {
     const [categories, setCategories] = useState([]);
     const [categoriesLoading, setCategoriesLoading] = useState(true);
     const [catetgoriesError, setCategoriesError] = useState(null);
-
+    const [activeTab, setActiveTab] = useState("all");
     useEffect(() => {
         async function load() {
             try {
@@ -45,7 +45,11 @@ function Home() {
         load();
 
     }, []);
-    console.log(categories)
+    const tabCateogries = ["all", ...new Set(products.map(i => i.category))];
+    const filteredTabProducts = activeTab === "all"
+        ? products.slice(0,10)
+        : products.filter(i => i.category === activeTab).slice(0,10);
+
     return (
         <>
             {/* Hero Section */}
@@ -61,30 +65,45 @@ function Home() {
             </section>
             {/* Category Sectoin */}
             <section className='bg-gray-200 py-16'>
-                <div className="container grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                    {categoriesLoading && <h3>Loading.....</h3>}
-                    {catetgoriesError && <h3>{catetgoriesError}</h3>}
-                    {!categoriesLoading && !catetgoriesError &&
-                        categories.map((category, index) => (
-                            <Link to="/" key={index}>
-                                <div className='flex flex-col gap-2 items-center border border-gray-400 p-3 shadow-md rounded-lg bg-white md:gap-3 md:p-4 lg:gap-4 lg:p-7'>
-                                    <img className='w-22 h-22 object-cover rounded-full md:h-26 md:w-26 lg:h-32 lg:w-32' src={category.Image} />
-                                    <div className='text-md font-medium lg:text-xl'>{category.Name}</div>
-                                </div>
-                            </Link>
-                        ))}
+                <div className="container">
+                    <h2 className='mb-7'>Shop by Category</h2>
+                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                        {categoriesLoading && <h3>Loading.....</h3>}
+                        {catetgoriesError && <h3>{catetgoriesError}</h3>}
+                        {!categoriesLoading && !catetgoriesError &&
+                            categories.map((category, index) => (
+                                <Link to="/" key={index}>
+                                    <div className='flex flex-col gap-2 items-center border border-gray-400 p-3 shadow-md rounded-lg bg-white md:gap-3 md:p-4 lg:gap-4 lg:p-7'>
+                                        <img className='w-22 h-22 object-cover rounded-full md:h-26 md:w-26 lg:h-32 lg:w-32' src={category.Image} />
+                                        <div className='text-md font-medium lg:text-xl'>{category.Name}</div>
+                                    </div>
+                                </Link>
+                            ))}
+                    </div>
                 </div>
             </section>
-
+            {/* Product Filter Section */}
             <section className="container my-20">
-                <section className='grid grid-cols-3 gap-x-1 gap-y-4 md:grid-cols-5 lg:gap-8'>
+                <h2 className='mb-7'>Trending Products</h2>
+                <div className="tab-btns-con flex gap-3 mb-7 overflow-auto pb-2 lg:pb-0">
+                    {!productsLoading && !productsError &&
+                        tabCateogries.map(cat => (
+                            <button key={cat}
+                                onClick={() => setActiveTab(cat)}
+                                className={`px-3 py-1 border border-primary text-primary rounded-md cursor-pointer hover:bg-primary hover:text-white 
+                            ${cat === activeTab ? "bg-primary text-white" : ""}`}>
+                                {cat}
+                            </button>
+                        ))} 
+                </div>
+                <div className='grid grid-cols-3 gap-x-1 gap-y-4 md:grid-cols-5 lg:gap-8'>
                     {productsLoading && <h3>Loading Products....</h3>}
                     {productsError && <h3>{productsError}</h3>}
                     {!productsLoading && !productsError &&
-                        products.map(item => (
+                        filteredTabProducts.map(item => (
                             <Product key={item.id} item={item} />
                         ))}
-                </section>
+                </div>
             </section>
 
         </>
