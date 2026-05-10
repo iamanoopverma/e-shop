@@ -69,6 +69,9 @@
     color: #000;
     transition: all 0.2s ease-in-out;
   }
+  button{
+    @apply cursor-pointer;
+  }
 
   a:hover {
     color: var(--color-primary);
@@ -150,6 +153,10 @@
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.category-list{
+  scrollbar-width: none;
 }
 
 

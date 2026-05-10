@@ -1,141 +1,167 @@
 import { Outlet, Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import logo from "../assets/photos/logo.webp";
+import { LuWandSparkles, LuSofa } from "react-icons/lu";
+import { TbSpray } from "react-icons/tb";
+import { CiDeliveryTruck, CiHeart, CiUser, CiShoppingCart, CiShoppingBasket, CiSearch } from "react-icons/ci";
+import { GiBackwardTime } from "react-icons/gi";
+import { SlWallet } from "react-icons/sl";
+import { TbTruckDelivery } from "react-icons/tb";
+import { HiOutlineShoppingBag } from "react-icons/hi2";
+import { PiBasket } from "react-icons/pi";
+import { SlArrowDown } from "react-icons/sl";
 
 function MainLayout() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const menuRef = useRef(null);
-  const menuButtonRef = useRef(null);
-
-  const menuVisibility = isMenuOpen ? "translate-x-0" : "-translate-x-full";
-  const navMobile = "flex flex-col items-start fixed top-0 left-0 h-screen w-3/4 gap-2 p-12 bg-amber-200 transform transition-transform z-10 lg:hidden";
-  const navDesktop = "hidden lg:flex lg:items-center lg:gap-20 [&>a]:hover:text-blue-900";
+  const [activeCat, setActiveCat] = useState("All Categories");
+  const [dropdownActive, setDropdownActive] = useState(false);
+  const [selectedCat, setSelectedCat] = useState("All Categories");
   const footerListTitle = "w-fit pb-1 text-xl font-medium mb-6 border-b-2 border-secondary";
   const socialLinks = "flex items-center justify-center p-2 bg-gray-400 rounded-full hover:bg-primary"
   function handleToggle() {
     setIsMenuOpen((prev) => !prev);
   }
-  useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
-  }, [isMenuOpen]);
+  const categories = [
+    {
+      name: "All Categories",
+      icon: HiOutlineShoppingBag
+    },
+    {
+      name: "Beauty",
+      icon: LuWandSparkles
+    },
+    {
+      name: "Fragrances",
+      icon: TbSpray
+    },
+    {
+      name: "Furnitures",
+      icon: LuSofa
+    },
+    {
+      name: "Groceries",
+      icon: PiBasket
+    },
 
-  useEffect(() => {
-    if (!isMenuOpen) return;
-    const focusableSelector =
-      'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])';
-
-    const menuEl = menuRef.current;
-    if (!menuEl) return;
-
-    const menuFocusables = Array.from(
-      menuEl.querySelectorAll(focusableSelector),
-    );
-    const firstEl = menuFocusables[0];
-    const lastEl = menuFocusables[menuFocusables.length - 1];
-    function handleKeyDown(e) {
-      if (e.key !== "Tab") return;
-      if (e.shiftKey && document.activeElement === firstEl) {
-        e.preventDefault();
-        lastEl.focus();
-      }
-      if (!e.shiftKey && document.activeElement === lastEl) {
-        e.preventDefault();
-        firstEl.focus();
-      }
-    }
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isMenuOpen]);
-
-  useEffect(() => {
-    if (!isMenuOpen) {
-      menuButtonRef.current?.focus();
-    }
-  }, [isMenuOpen]);
+  ]
 
   return (
     <>
-      <header className="bg-gray-200">
-        <div className="container flex items-center justify-between relative py-4">
-          <button
-            type="button"
-            ref={menuButtonRef}
-            className={`lg:hidden`}
-            onClick={handleToggle}
-            aria-label="Open Menu"
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-menu"
-            aria-hidden={isMenuOpen}
-          >
-            <svg
-              aria-hidden="true"
-              focusable="false"
-              height="30"
-              width="30"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g strokeWidth="" />
-              <g strokeLinecap="round" strokeLinejoin="round" />
-              <path
-                d="M1 12a1 1 0 0 1 1-1h20a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1m0-8a1 1 0 0 1 1-1h20a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1m0 16a1 1 0 0 1 1-1h20a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1"
-                fill="#0f0f0f"
-              />
-            </svg>
-          </button>
-          <Link to="/" tabIndex={isMenuOpen ? -1 : undefined}>
-            <img className="w-22 md:w-26" src={logo} alt="Company Logo"/> 
-          </Link>
-          <nav className={navDesktop}>
-            <Link to="/">Beauty</Link>
-            <Link to="/">Fragrances</Link>
-            <Link to="/">Furnitures</Link>
-            <Link to="/">Groceries</Link>
-            <Link to="/cart">Carts</Link>
-          </nav>
+      <header>
+        <div className="bg-primary text-white py-2">
+          <div className="container flex justify-center items-center 
+          md:justify-between 
+          lg:gap-8 lg:justify-normal">
+            <div className="flex gap-2 items-center">
+              <TbTruckDelivery size={20} strokeWidth={1.3} />
+              <span className="text-sm leading-0">Free Delivery On Orders Above ₹499</span>
+            </div>
+            <div className="hidden md:flex gap-2 items-center">
+              <GiBackwardTime size={20} strokeWidth={1} />
+              <span className="text-sm leading-0">7 Days Easy Returns</span>
+            </div>
+            <div className="hidden md:flex gap-2 items-center">
+              <SlWallet size={18} strokeWidth={1} />
+              <span className="text-sm leading-0">100% Secure Payments</span>
+            </div>
+            <div className="hidden ms-auto lg:flex items-center gap-4
+            [&>a]:text-white [&>a]:text-sm [&>a]:hover:text-gray-400">
+              <Link to='/'>Track Order</Link>
+              <Link to='/'>Help & Support</Link>
+              <Link to='/'>Sell On E-Shop</Link>
+            </div>
+          </div>
         </div>
-        {isMenuOpen && (
-          <div
-            className="fixed inset-0 bg-black/40 z-10"
-            onClick={handleToggle}
-            aria-hidden="true"
-          />
-        )}
-
-        <nav
-          ref={menuRef}
-          className={`${navMobile} ${menuVisibility} z-20`}
-          id="mobile-menu"
-          aria-hidden={!isMenuOpen}
-          inert={isMenuOpen ? undefined : " "}
-        >
-          {isMenuOpen && (
-            <button
-              className="fixed top-6 right-8"
-              type="button"
-              aria-label="Close Menu"
-              onClick={handleToggle}
-            >
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                xmlns="http://www.w3.org/2000/svg"
-                width="22"
-                height="22"
-                viewBox="0 0 52 52"
-                xmlSpace="preserve"
-              >
-                <path d="m31 25.4 13-13.1c.6-.6.6-1.5 0-2.1l-2-2.1c-.6-.6-1.5-.6-2.1 0L26.8 21.2c-.4.4-1 .4-1.4 0L12.3 8c-.6-.6-1.5-.6-2.1 0l-2.1 2.1c-.6.6-.6 1.5 0 2.1l13.1 13.1c.4.4.4 1 0 1.4L8 39.9c-.6.6-.6 1.5 0 2.1l2.1 2.1c.6.6 1.5.6 2.1 0L25.3 31c.4-.4 1-.4 1.4 0l13.1 13.1c.6.6 1.5.6 2.1 0L44 42c.6-.6.6-1.5 0-2.1L31 26.8c-.4-.4-.4-1 0-1.4" />
-              </svg>
-            </button>
-          )}
-          <Link to="/">Beauty</Link>
-          <Link to="/">Fragrances</Link>
-          <Link to="/">Furnitures</Link>
-          <Link to="/">Groceries</Link>
-          <Link to="/cart">Carts</Link>
-        </nav>
+        <div className="container">
+          <nav className="flex items-center gap-14 justify-between mt-5 mb-3 lg:my-5">
+            {/* Logo */}
+            <Link className="shrink-0" to='/'>
+              <img className="w-22" src={logo} alt="Logo" />
+            </Link>
+            {/* Tab Search Form*/}
+            <form className="hidden md:flex gap-4 w-full" action="">
+              <div className="flex items-center w-full border border-gray-400 rounded-md">
+                <input className="w-full focus:outline-0 p-2" type="text" placeholder="Search for products............" />
+                {/* Custom Dropdown */}
+                <div 
+                onClick={() => (setDropdownActive(!dropdownActive))}
+                className="relative hidden lg:flex items-center justify-center min-w-46 gap-2 border-l border-gray-400 text-nowrap px-6 py-2 cursor-pointer">
+                  <span>{selectedCat}</span>
+                  <div className={`${dropdownActive ? "flex" : "hidden"} absolute flex-col border border-primary w-full 
+                  top-14 left-0 bg-white z-20 rounded-md
+                  [&>span]:p-2
+                  [&>span]:px-4`}
+                  >
+                    {
+                      categories.map((cat) => (
+                        <span key={cat.name} 
+                        className="hover:bg-primary hover:text-white cursor-pointer"
+                        onClick={(() => (setSelectedCat(cat.name)))}>{cat.name}</span>
+                      ))
+                    } 
+                  </div>
+                  <SlArrowDown className="shrink-0" size={12} strokeWidth={40} />
+                </div>
+                <button className="lg:hidden p-2" type="submit">
+                  <CiSearch size={18} strokeWidth={1} />
+                </button>
+              </div>
+              <button className="hidden lg:block bg-primary text-white px-4 py-2 rounded-md" type="submit">Search</button>
+            </form>
+            <ul className="flex flex-row gap-4 items-center 
+            [&>li>a]:flex
+            [&>li>a]:flex-col
+            [&>li>a]:items-center">
+              <li>
+                <Link to="/">
+                  <CiHeart size={24} strokeWidth={.5} />
+                  <span className="hidden md:block">Wishlist</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/">
+                  <CiUser size={24} strokeWidth={.5} />
+                  <span className="hidden md:block">Account</span>
+                </Link>
+              </li>
+              <li>
+                <Link className="relative" to="/">
+                  <CiShoppingCart size={24} strokeWidth={.5} />
+                  <span
+                    className="absolute -top-2 -right-2 w-5 h-5 flex items-center justify-center text-xs bg-primary text-white rounded-full">
+                    2</span>
+                  <span className="hidden md:block">Cart</span>
+                </Link>
+              </li>
+            </ul>
+          </nav>
+          {/* Mobile Search Form*/}
+          <form className="relative mb-4 md:hidden" action="">
+            <div className="flex items-center p-2 border border-gray-400 rounded-md">
+              <input className="w-full focus:outline-0" type="text" placeholder="Search for products............" />
+              <CiSearch size={18} strokeWidth={1} />
+            </div>
+          </form>
+          {/* Category Menu */}
+          <ul className="category-list flex flex-row items-center gap-4 border-b border-gray-300 overflow-x-auto">
+            {
+              categories.map((cat) => (
+                <li
+                  id={cat.name}
+                  onClick={() => (setActiveCat(cat.name))}
+                  className={`rounded-t-md md:p-3 p-2 cursor-pointer ${activeCat === cat.name
+                    ? 'bg-blue-50 border-b-4 border-primary'
+                    : ''}
+                  `}>
+                  <Link className="flex flex-col items-center gap-2 text-nowrap
+                  md:flex-row md:gap-3" to='/'>
+                    <cat.icon size={22} strokeWidth={1.5} color="var(--color-primary)" />
+                    <div className="text-xs md:text-base leading-4">{cat.name}</div>
+                  </Link>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
       </header>
 
       <Outlet />
